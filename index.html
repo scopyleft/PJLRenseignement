@@ -3,14 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <title>PJL Renseigment</title>
+  <script src="linksener.js"></script>
   <script>
     window.addEventListener('load', function() {
-      [].map.call(document.querySelectorAll('a'), function(a) {
-        a.addEventListener('click', function(a) {
-          a.preventDefault();
-          console.log('lien cliqué', a);
-        });
-      });
+      linksener(document.querySelectorAll('a'));
     });
   </script>
 </head>
