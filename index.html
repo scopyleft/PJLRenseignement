@@ -5,9 +5,11 @@
   <title>PJL Renseigment</title>
   <script>
     window.addEventListener('load', function() {
-      document.querySelector('a').addEventListener('click', function(a) {
-        a.preventDefault();
-        console.log('lien cliqué');
+      [].map.call(document.querySelectorAll('a'), function(a) {
+        a.addEventListener('click', function(a) {
+          a.preventDefault();
+          console.log('lien cliqué', a);
+        });
       });
     });
   </script>
@@ -15,7 +17,10 @@
 <body>
   <h1>PJL Renseignement</h1>
   <p>
-    Ceci est un contenu. Ceci est <a href="https://developer.mozilla.org/">un lien</a>.
+    Ceci est un contenu. Ceci est <a href="https://developer.mozilla.org">un lien</a>.
+  </p>
+  <p>
+    Poser une <a href="http://stackoverflow.com">question</a>.
   </p>
 </body>
 </html>
