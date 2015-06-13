@@ -1,16 +1,21 @@
 (function() {
   window.counter = {
-    _storage: {},
 
     get storage() {
-      return this._storage;
+      return JSON.parse(localStorage.getItem('_counter')) || {};
+    },
+
+    set storage(value) {
+      localStorage.setItem('_counter', JSON.stringify(value));
     },
 
     increment: function(key) {
-      if(!(key in this._storage)) {
-        this._storage[key] = 0;
+      var storage = this.storage;
+      if(!(key in storage)) {
+        storage[key] = 0;
       }
-      ++this._storage[key];
+      ++storage[key];
+      this.storage = storage;
     },
 
     getCount: function(key) {
