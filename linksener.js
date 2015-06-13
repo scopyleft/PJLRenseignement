@@ -2,8 +2,8 @@
   "use strict";
 
   window.linksener = function(selectors, callback) {
-    [].map.call(selectors, function(a) {
-      a.addEventListener('click', function(a) {
+    [].map.call(selectors, function(node) {
+      node.addEventListener('click', function(a) {
         callback(a);
       });
     });
