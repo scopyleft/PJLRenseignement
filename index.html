@@ -6,12 +6,21 @@
   <script src="linksener.js"></script>
   <script src="counter.js"></script>
   <script>
+    var worker = new Worker('linkfetcher.js');
     window.addEventListener('load', function() {
       linksener(document.querySelectorAll('a'), function(evt) {
         evt.preventDefault();
         counter.increment(evt.target);
+        console.log('Fetching: ' + evt.target.href)
+        worker.postMessage(evt.target.href);
         console.table(counter.storage);
       });
+    });
+
+    worker.addEventListener('message', function(e) {
+      document.open();
+      document.write(e.data);
+      document.close();
     });
   </script>
 </head>
@@ -23,5 +32,6 @@
   <p>
     Poser une <a href="http://stackoverflow.com">question</a>.
   </p>
+  <p><a href="http://httpbin.org/">Un lien supportant CORS</a>.</p>
 </body>
 </html>
