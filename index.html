@@ -11,7 +11,7 @@
       linksener(document.querySelectorAll('a'), function(evt) {
         evt.preventDefault();
         counter.increment(evt.target);
-        console.log('Fetching: ' + evt.target.href)
+        console.log(`Fetching: ${evt.target}`)
         worker.postMessage(evt.target.href);
         console.table(counter.storage);
       });

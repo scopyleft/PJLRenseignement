@@ -1,9 +1,9 @@
 self.addEventListener('message', function(e) {
-  function reqListener() {
+  function listener() {
     self.postMessage(this.responseText);
   }
-  var oReq = new XMLHttpRequest();
-  oReq.onload = reqListener;
-  oReq.open("get", e.data, true);
-  oReq.send();
+  var request = new XMLHttpRequest();
+  request.onload = listener;
+  request.open("get", e.data, true);
+  request.send();
 });
